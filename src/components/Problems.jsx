@@ -8,7 +8,7 @@ const ProblemCard = ({ img, text }) => {
         className="w-32 h-32 object-cover rounded-lg shrink-0"
       />
 
-      <h3 className="text-2xl font-semibold text-[#1F3A5F] text-left flex-1 ml-6">
+      <h3 className="text-xl sm:text-2xl font-semibold text-[#1F3A5F] text-left flex-1 ml-6">
         {text}
       </h3>
     </div>
