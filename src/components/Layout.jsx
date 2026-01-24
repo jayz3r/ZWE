@@ -10,7 +10,7 @@ const Layout = () => {
       <header className="fixed top-0 left-0 w-full z-50 border-b border-gray-300 shadow-sm bg-sky-50">
         <div className="flex items-center justify-between px-4 sm:px-10 h-16">
           {/* Logo */}
-          <NavLink to={'/'} className="">
+          <NavLink to={"/"} className="">
             <h1 className="text-2xl font-bold text-center sm:text-center text-sky-400">
               ZWE
             </h1>
@@ -18,7 +18,7 @@ const Layout = () => {
 
           {/* Desktop nav */}
           <nav className="hidden sm:flex gap-10 justify-center absolute left-1/2 transform -translate-x-1/2">
-          <NavLink
+            <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive ? "underlined text-sky-400" : "text-gray-700"
@@ -49,7 +49,6 @@ const Layout = () => {
               }
             >
               Добавить островок
-              
             </NavLink>
           </nav>
 
@@ -123,7 +122,46 @@ const Layout = () => {
       <main className="pt-16">
         <Outlet />
       </main>
-      <footer> </footer>
+      <footer className="bg-[#1F3A5F] text-white py-8">
+  <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+    
+    {/* Logo + Nav */}
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+      {/* Logo */}
+      <NavLink to={"/"}>
+        <h2 className="text-2xl font-bold">ZWE</h2>
+      </NavLink>
+
+      {/* Nav Links */}
+      <nav className="flex flex-col sm:flex-row gap-4 sm:gap-10 mt-4 sm:mt-0">
+        <NavLink
+          to="/map"
+          className="hover:text-sky-400 transition-colors duration-200"
+        >
+          Карта
+        </NavLink>
+        <NavLink
+          to="/gallery"
+          className="hover:text-sky-400 transition-colors duration-200"
+        >
+          Галлерея
+        </NavLink>
+        <NavLink
+          to="/add"
+          className="hover:text-sky-400 transition-colors duration-200"
+        >
+          Добавить островок
+        </NavLink>
+      </nav>
+    </div>
+
+    {/* Copyright text */}
+    <div className="mt-4 sm:mt-0 text-right text-sm text-gray-400">
+      © 2026 ZWE — экологический проект по очистке водоёмов
+    </div>
+  </div>
+</footer>
+
     </div>
   );
 };
