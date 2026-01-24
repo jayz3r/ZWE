@@ -1,0 +1,65 @@
+{
+  "data": [
+    {
+      "id": "101",
+      "name": "Ribalka lake",
+      "type": "Fishing pond",
+      "type_label": "Рыболовное озеро",
+      "location": {
+        "district": "Кантский район",
+        "landmark": "возле Первомайское",
+        "coordinates": {
+          "lat": 42.8956,
+          "lng": 74.8568
+        }
+      },
+      "metrics": {
+        "total_area_m2": 137000,
+        "islands_area_m2": 1000,
+        "exploitation_days": 14,
+        "bionar_amount": "1 тонна",
+        "aerobic_bacteria_amount": "140 кг"
+      },
+      "status": {
+        "water_quality_level": "satisfactory",  
+        "water_quality_label": "Удовлетворительно",
+        "temperature_c": "+16.2",
+        "aeration_system": false
+      },
+      "imageUrl": "https://triptokyrgyzstan.com/sites/default/files/styles/modal/public/media/image/2015-02-27_1122_kopiya.jpg?itok=ZjcyAov0"
+    },
+    {
+      "id": "102",
+      "name": "Зеленая Заводь",
+      "type": "Industrial pond",
+      "type_label": "Технический пруд",
+      "location": {
+        "district": "Аламудунский район",
+        "landmark": "с. Лебединовка",
+        "coordinates": {
+          "lat": 42.8700,
+          "lng": 74.6500
+        }
+      },
+      "metrics": {
+        "total_area_m2": 50000,
+        "islands_area_m2": 500,
+        "exploitation_days": 45,
+        "bionar_amount": "0.5 тонны",
+        "aerobic_bacteria_amount": "80 кг"
+      },
+      "status": {
+        "water_quality_level": "good",
+        "water_quality_label": "Хорошо",
+        "temperature_c": 14.5,
+        "aeration_system": true
+      },
+      "imageUrl": "https://example.com/images/green-pond.jpg"
+    }
+  ],
+  "meta": {
+    "total": 2,
+    "page": 1,
+    "limit": 20
+  }
+}
