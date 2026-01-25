@@ -114,7 +114,7 @@ const AddPage = () => {
           onChange={handleChange}
           required
         >
-          <option value="" disabled hidden>
+          <option value="" disabled hidden >
             Выберите регион
           </option>
           <option>Бишкек</option>
@@ -161,7 +161,7 @@ const AddPage = () => {
       {/* Toast notification */}
       {toast.message && (
         <div
-          className={`fixed bottom-5 right-5 px-5 py-3 rounded-xl shadow-lg text-white ${
+          className={`fixed bottom-5 sm:right-5 px-5 py-3 rounded-xl shadow-lg items-center text-white ${
             toast.type === "success" ? "bg-green-500" : "bg-red-500"
           }`}
         >
