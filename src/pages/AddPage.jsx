@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const contactRegex =
-  /(^\+?[0-9\s\-]{7,15}$)|(^[^\s@]+@[^\s@]+\.[^\s@]+$)/;
+const contactRegex = /(^\+?[0-9\s\-]{7,15}$)|(^[^\s@]+@[^\s@]+\.[^\s@]+$)/;
 
 const AddPage = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +14,9 @@ const AddPage = () => {
   const [error, setError] = useState("");
   const [toast, setToast] = useState({ message: "", type: "" });
 
-  const token = "8349676665:AAG9sWMyYNnuculKzngoR4lGN6qYR27cnck";
-  const chat_id = "@zweproject"; 
+  const token = import.meta.env.VITE_TELEGRAM_TOKEN;
+  const chat_id = import.meta.env.VITE_CHAT_ID;
+
   const API = `https://api.telegram.org/bot${token}/sendMessage`;
 
   const handleChange = (e) => {
