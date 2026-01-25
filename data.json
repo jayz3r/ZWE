@@ -6,6 +6,7 @@
       "type": "Fishing pond",
       "type_label": "Рыболовное озеро",
       "location": {
+        "region": "Бишкек",
         "district": "Кантский район",
         "landmark": "возле Первомайское",
         "coordinates": {
@@ -24,7 +25,8 @@
         "water_quality_level": "satisfactory",  
         "water_quality_label": "Удовлетворительно",
         "temperature_c": "+16.2",
-        "aeration_system": false
+        "aeration_system": false,
+        "readiness":"yes"
       },
       "imageUrl": "https://triptokyrgyzstan.com/sites/default/files/styles/modal/public/media/image/2015-02-27_1122_kopiya.jpg?itok=ZjcyAov0"
     },
@@ -34,6 +36,7 @@
       "type": "Industrial pond",
       "type_label": "Технический пруд",
       "location": {
+        "region": "Бишкек",
         "district": "Аламудунский район",
         "landmark": "с. Лебединовка",
         "coordinates": {
@@ -52,9 +55,11 @@
         "water_quality_level": "good",
         "water_quality_label": "Хорошо",
         "temperature_c": 14.5,
-        "aeration_system": true
+        "aeration_system": true,
+        "readiness":"no",
+        "launch_time": "15.07.2026"
       },
-      "imageUrl": "https://example.com/images/green-pond.jpg"
+      "imageUrl": "/Zavodb.jpg"
     }
   ],
   "meta": {

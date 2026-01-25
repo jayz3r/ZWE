@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
 import locdot from "/locdot.svg";
 import Modal from "../components/Modal";
@@ -7,32 +8,34 @@ import data from "/data.json";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiamF5ejNyIiwiYSI6ImNta2Y5MDl5bzA4cHYzZHNiNTI1bjRzZTYifQ.uwZNK7pqv30stDP6mlXQOw";
 
-const lakesGeoJSON = {
-  type: "FeatureCollection",
-  features: data.data.map((lake) => ({
-    type: "Feature",
-    properties: {
-      id: lake.id, // only id here
-    },
-    geometry: {
-      type: "Point",
-      coordinates: [
-        lake.location.coordinates.lng,
-        lake.location.coordinates.lat,
-      ],
-    },
-  })),
-};
-
 export default function OverviewPage() {
-  const mapRef = useRef(null);
-  const [modalData, setModalData] = useState(null); // store info to show in modal
+  const mapContainerRef = useRef(null);
+  const mapRef = useRef(null); // store Mapbox instance
+  const [modalData, setModalData] = useState(null);
+  const location = useLocation(); // check if coming from Gallery with lakeId
+
+  // Prepare GeoJSON for markers
+  const lakesGeoJSON = {
+    type: "FeatureCollection",
+    features: data.data.map((lake) => ({
+      type: "Feature",
+      properties: { id: lake.id },
+      geometry: {
+        type: "Point",
+        coordinates: [
+          lake.location.coordinates.lng,
+          lake.location.coordinates.lat,
+        ],
+      },
+    })),
+  };
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!mapContainerRef.current) return;
 
+    // Initialize map
     const map = new mapboxgl.Map({
-      container: mapRef.current,
+      container: mapContainerRef.current,
       style: "mapbox://styles/jayz3r/cmkfateu0002m01sf21yp5tao",
       center: [75.5, 41.5],
       zoom: 6,
@@ -40,21 +43,21 @@ export default function OverviewPage() {
         [69.1, 39.2],
         [80.3, 43.3],
       ],
-      fadeDuration: 0,
-      preserveDrawingBuffer: false,
       attributionControl: false,
     });
 
+    mapRef.current = map; // save instance
+
     map.on("load", () => {
       map.resize();
-      map.setPadding({ top: 40, bottom: 40, left: 40, right: 40 });
 
+      // Add lakes source
       map.addSource("lakes", { type: "geojson", data: lakesGeoJSON });
 
+      // Add custom marker image
       const img = new Image();
       img.onload = () => {
         map.addImage("locdot-icon", img);
-
         map.addLayer({
           id: "lakes-symbol",
           type: "symbol",
@@ -68,35 +71,45 @@ export default function OverviewPage() {
       };
       img.src = locdot;
 
-      // Click handler for lakes
+      // Click on marker opens modal
       map.on("click", "lakes-symbol", (e) => {
         const id = e.features[0].properties.id;
-
         const lake = data.data.find((item) => item.id === id);
-
-        setModalData(lake); // now this is your REAL object
+        if (lake) setModalData(lake);
       });
 
-      map.on(
-        "mouseenter",
-        "lakes-symbol",
-        () => (map.getCanvas().style.cursor = "pointer"),
-      );
-      map.on(
-        "mouseleave",
-        "lakes-symbol",
-        () => (map.getCanvas().style.cursor = ""),
-      );
+      map.on("mouseenter", "lakes-symbol", () => {
+        map.getCanvas().style.cursor = "pointer";
+      });
+      map.on("mouseleave", "lakes-symbol", () => {
+        map.getCanvas().style.cursor = "";
+      });
     });
 
     return () => map.remove();
   }, []);
 
+  // Fly to lake if coming from Gallery "Подробнее" button
+  useEffect(() => {
+    const lakeId = location.state?.lakeId;
+    if (lakeId && mapRef.current) {
+      const lake = data.data.find((item) => item.id === lakeId);
+      if (lake) {
+        mapRef.current.flyTo({
+          center: [lake.location.coordinates.lng, lake.location.coordinates.lat],
+          zoom: 10,
+          essential: true,
+        });
+        setModalData(lake); // optionally open modal immediately
+      }
+    }
+  }, [location.state]);
+
   return (
     <div className="w-full h-screen flex items-center justify-center bg-sky-100">
       <div
-        ref={mapRef}
-        className="w-[95%] h-[95%] rounded-xl shadow-xl overflow-hidden relative will-change-transform"
+        ref={mapContainerRef}
+        className="w-[95%] h-[95%] rounded-xl shadow-xl overflow-hidden relative"
       />
 
       {/* Modal */}

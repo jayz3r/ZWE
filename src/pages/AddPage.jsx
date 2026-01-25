@@ -112,7 +112,8 @@ const AddPage = () => {
           name="region"
           value={formData.region}
           onChange={handleChange}
-          required
+          required 
+
         >
           <option value="" disabled hidden >
             Выберите регион
