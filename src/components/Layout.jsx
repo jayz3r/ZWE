@@ -105,7 +105,7 @@ const Layout = () => {
               Галлерея
             </NavLink>
             <NavLink
-              to="/report"
+              to="/add"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
                 isActive

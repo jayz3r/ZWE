@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "alertifyjs": "^1.14.0",
     "leaflet": "^1.9.4",
     "mapbox-gl": "^3.18.0",
     "react": "^19.2.0",

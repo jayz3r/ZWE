@@ -9,6 +9,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-sky-100)
 }
 
 .underlined{
@@ -29,3 +30,26 @@
 /* .container{
 
 } */
+ .inputs{
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  color: #3E6BA8;
+  
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+ }
+ .inputs option{
+  color: #3E6BA8;
+  opacity: 0.7;
+ }
+ .inputs:valid {
+  color: #314D8B; /* darker after selection */
+}
+ .inputs::placeholder{
+  color: #3E6BA8;
+ }
+ input:focus {
+  border-color: #3E6BA8; /* sky-400 */
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4); /* focus ring */
+}
