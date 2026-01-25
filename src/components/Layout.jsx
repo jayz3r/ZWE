@@ -40,7 +40,7 @@ const Layout = () => {
                 isActive ? "underlined text-blue-500" : "text-gray-700"
               }
             >
-              Галлерея
+              Галерея
             </NavLink>
             <NavLink
               to="/add"
@@ -102,7 +102,7 @@ const Layout = () => {
                   : "text-gray-700 text-lg"
               }
             >
-              Галлерея
+              Галерея
             </NavLink>
             <NavLink
               to="/add"
