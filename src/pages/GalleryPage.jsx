@@ -30,7 +30,7 @@ const GalleryPage = () => {
   });
 
   return (
-    <div className='bg-[url("/island.jpg")] bg-cover bg-center min-h-screen flex flex-col items-center px-6 py-10 gap-6'>
+    <div className='bg-[url("/island.webp")] bg-cover bg-center min-h-screen flex flex-col items-center px-6 py-10 gap-6'>
       <div className="w-full max-w-6xl">
         <h1 className="text-4xl font-bold text-blue-900 mb-2">Наши острова</h1>
         <h2 className="text-2xl font-bold text-[#3E6BA8] mb-6">

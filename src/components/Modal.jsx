@@ -69,6 +69,7 @@ export default function Modal({ isOpen, onClose, data }) {
                 <img
                   src={data.imageUrl}
                   className="w-full h-full object-cover mask-l-from-50% mask-l-to-90%"
+                  loading="lazy"
                 />
               </div>
             </div>

@@ -5,6 +5,7 @@ import OverviewPage from "./pages/OverviewPage";
 import MainPage from "./pages/MainPage";
 import AddPage from "./pages/AddPage";
 import GalleryPage from "./pages/GalleryPage";
+import IslandPage from "./pages/IslandPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="map" element={<OverviewPage />} />
           <Route path="add" element={<AddPage />} />
           <Route path="gallery" element={<GalleryPage />} />
+          <Route path="/island/:id" element={<IslandPage />} />
         </Route>
       </Routes>
   );

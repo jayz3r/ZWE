@@ -71,7 +71,7 @@ const AddPage = () => {
   };
 
   return (
-    <div className="form bg-[url('/zweBG.jpg')] bg-cover bg-center min-h-screen flex flex-col items-center justify-center px-4 ">
+    <div className="form bg-[url('/zweBG.webp')] bg-cover bg-center min-h-screen flex flex-col items-center justify-center px-4 ">
       <form
         onSubmit={handleSubmit}
         className="

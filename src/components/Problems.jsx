@@ -6,6 +6,7 @@ const ProblemCard = ({ img, text }) => {
         src={img}
         alt=""
         className="w-32 h-32 object-cover rounded-lg shrink-0"
+        loading="lazy"
       />
 
       <h3 className="text-xl sm:text-2xl font-semibold text-[#1F3A5F] text-left flex-1 ml-6">

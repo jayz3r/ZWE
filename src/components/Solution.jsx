@@ -40,7 +40,7 @@ const Solution = () => {
 
         {/* Image */}
         <img
-          src="/zweBG.jpg"
+          src="/zweBG.webp"
           alt=""
           className="w-full sm:w-3/4 lg:w-1/2 rounded-3xl object-cover"
         />

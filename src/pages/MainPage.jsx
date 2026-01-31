@@ -7,7 +7,7 @@ const MainPage = () => {
   return (
     <div>
       <div className="wrapper bg-sky-100 ">
-        <div className="main__section bg-[url('/zweBG.jpg')] bg-cover bg-center h-screen shadow-lg rounded-lg flex flex-col justify-start  items-center ">
+        <div className="main__section bg-[url('/zweBG.webp')] bg-cover bg-center h-screen shadow-lg rounded-lg flex flex-col justify-start  items-center ">
           <div className="absolute inset-0  from-white/80 via-white/50 to-transparent"></div>
 
           <section className="relative">
