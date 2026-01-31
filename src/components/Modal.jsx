@@ -1,4 +1,3 @@
-// components/Modal.jsx
 import React, { useEffect, useRef } from "react";
 import Gauge from "./Gauge";
 import MetricRow from "./Metric";
@@ -28,8 +27,8 @@ export default function Modal({ isOpen, onClose, data }) {
       className="
         absolute
     top-46 md:top-20 lg:top-25
-    right-0 md:right-15
-    z-50
+    right-5 md:right-15
+    z-49
     pointer-events-auto
     rounded-2xl
     shadow-[0_4px_20px_rgba(0,0,0,0.08)]
@@ -43,7 +42,7 @@ export default function Modal({ isOpen, onClose, data }) {
           className="
             inline-block
             pointer-events-auto
-            w-[90%] sm:w-90
+            w-60 sm:w-85
             max-w-95
             bg-white/50
             backdrop-blur-xl
