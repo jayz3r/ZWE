@@ -12,15 +12,22 @@ export default function IslandPage() {
   return (
     <div className="min-h-screen bg-[url('/island.webp')] bg-cover bg-center p-4 sm:p-6 md:p-10">
       {/* Back Button */}
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 sm:mb-6 bg-sky-100/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base hover:bg-sky-100/70 transition-colors"
-      >
-        ← Назад
-      </button>
+      <div className="flex justify-between items-center mb-4 sm:mb-6">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-sky-100/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base hover:bg-sky-100/70 transition-colors"
+        >
+          ← Назад
+        </button>
+
+        {/* Show on Map Button */}
+        
+      </div>
+
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-[#1F3A5F] mb-6 sm:mb-8">
         Остров №{lake.id}
       </h1>
+
       {/* Main Card */}
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row">
         {/* Image */}
@@ -37,14 +44,13 @@ export default function IslandPage() {
             <h1 className="text-2xl sm:text-3xl font-bold text-[#1F3A5F] mb-2">
               {lake.name}
             </h1>
-            <p className="text-sm sm:text-base text-[#3E6BA8]">
-              {lake.type_label}
-            </p>
+            <p className="text-sm sm:text-base text-[#3E6BA8]">{lake.type_label}</p>
             <p className="text-sm sm:text-base mt-1">
               {lake.location.district}, {lake.location.landmark}
             </p>
 
             <div className="mt-3 sm:mt-4 space-y-1 text-sm sm:text-base">
+              <p>Состояние: {lake.status.state}</p>
               <p>Изношенность: {lake.wear_percent}</p>
               <p>Качество воды: {lake.status.water_quality_label}</p>
               <p>Температура: {lake.status.temperature_c}°C</p>
@@ -74,6 +80,12 @@ export default function IslandPage() {
               </div>
             </div>
           )}
+          <button
+          onClick={() => navigate("/map", { state: { lakeId: lake.id } })}
+          className="bg-sky-500 hover:bg-sky-600 text-white mt-4 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm sm:text-base transition-colors"
+        >
+          Показать на карте
+        </button>
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@
       },
 
       "status": {
+        "state":"Активен",
         "water_quality_level": "satisfactory",
         "water_quality_label": "Удовлетворительно",
         "temperature_c": "+16.2",
@@ -73,6 +74,7 @@
       },
 
       "status": {
+        "state":"Активен",
         "water_quality_level": "good",
         "water_quality_label": "Хорошо",
         "temperature_c": 14.5,
