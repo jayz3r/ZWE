@@ -37,7 +37,7 @@ const Card = ({ data = {} }) => {
         </p>
         <p className="text-sm font-semibold mt-2">{statusText}</p>
         <NavLink to={`/island/${data.id}`}>
-          <button className="mt-3 bg-sky-500 text-white px-4 py-2 rounded-xl hover:bg-sky-600 transition-colors w-max">
+          <button id="More" className="mt-3 bg-sky-500 text-white px-4 py-2 rounded-xl hover:bg-sky-600 transition-colors w-max">
             Подробнее
           </button>
         </NavLink>

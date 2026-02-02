@@ -53,7 +53,7 @@ const Layout = () => {
           </nav>
 
           {/* Mobile burger */}
-          <button className="sm:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
+          <button id="Burgermenu" aria-label="Burgermenu" className="sm:hidden z-50" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <HiX className="w-6 h-6 text-gray-800" />
             ) : (
