@@ -16,7 +16,7 @@ function App() {
         <Route
           path="map"
           element={
-            <Suspense fallback={<div>Loading map...</div>}>
+            <Suspense fallback={<div className="text-center items-center flex justify-center h-[50vw]">Загружаем карту...</div>}>
               <OverviewPage />
             </Suspense>
           }
