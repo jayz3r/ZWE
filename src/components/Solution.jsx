@@ -17,9 +17,9 @@ const SolutionCard = ({ img, text }) => {
 
 const Solution = () => {
   const cards = [
-    { img: "/azot.png", text: "Поглощает азот и фосфор" },
-    { img: "/kislorod.png", text: "Насыщает воду кислородом" },
-    { img: "/mutnost.png", text: "Снижает мутность и цветение" },
+    { img: "/azot.webp", text: "Поглощает азот и фосфор" },
+    { img: "/kislorod.webp", text: "Насыщает воду кислородом" },
+    { img: "/mutnost.webp", text: "Снижает мутность и цветение" },
   ];
 
   return (

@@ -24,14 +24,16 @@ const Card = ({ data = {} }) => {
       <img
         src={imageUrl}
         alt={name}
-        className="w-full sm:w-48 sm:h-auto h-48 object-cover"
+        width="192"
+        height="192"
         loading="lazy"
+        className="w-full sm:w-48 sm:h-auto h-48 object-cover"
       />
       <div className="flex flex-col justify-center p-4 flex-1">
         <h3 className="text-xl font-bold text-[#1F3A5F]">{name}</h3>
         <p className="text-sm text-[#3E6BA8] mt-1">{type_label}</p>
         <p className="text-sm mt-1">
-           {location.district}, {location.landmark}
+          {location.district}, {location.landmark}
         </p>
         <p className="text-sm font-semibold mt-2">{statusText}</p>
         <NavLink to={`/island/${data.id}`}>
