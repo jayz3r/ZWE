@@ -5,7 +5,7 @@ const ProblemCard = ({ img, text }) => {
       <img
         src={img}
         alt=""
-        className="w-32 h-32 object-cover rounded-lg shrink-0"
+        className="w-32 h-32 rounded-lg shrink-0"
         loading="lazy"
       />
 
@@ -17,12 +17,12 @@ const ProblemCard = ({ img, text }) => {
 };
 const Problems = () => {
   const cards = [
-    { img: "/lake.svg", text: "В Кыргызстане  около 2000 озёр" },
-    { img: "/norms.png", text: "Почти 40% превышают нормы загрязнений" },
-    { img: "/o2.svg", text: "Малые водоёмы Чуйской долины теряют кислород" },
-    { img: "/Money.svg", text: "«Цветение» воды → массовая гибель рыбы" },
-    { img: "/yearly.svg", text: "Экономический ущерб: $24–31 млн ежегодно" },
-    { img: "/fish.svg", text: "120 тонн рыбы = до 100 тонн CO₂-эквивалента" },
+    { img: "/lake.webp", text: "В Кыргызстане  около 2000 озёр" },
+    { img: "/norms.webp", text: "Почти 40% превышают нормы загрязнений" },
+    { img: "/o2.webp", text: "Малые водоёмы Чуйской долины теряют кислород" },
+    { img: "/Money.webp", text: "«Цветение» воды → массовая гибель рыбы" },
+    { img: "/yearly.webp", text: "Экономический ущерб: $24–31 млн ежегодно" },
+    { img: "/fish.webp", text: "120 тонн рыбы = до 100 тонн CO₂-эквивалента" },
   ];
  
   return (
