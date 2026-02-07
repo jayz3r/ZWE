@@ -54,44 +54,116 @@ export default function OverviewPage() {
     mapRef.current = map;
 
     map.on("load", () => {
-      map.addSource("lakes", { type: "geojson", data: lakesGeoJSON });
+  // SOURCE with clustering
+  map.addSource("lakes", {
+    type: "geojson",
+    data: lakesGeoJSON,
+    cluster: true,
+    clusterMaxZoom: 14,
+    clusterRadius: 50,
+  });
 
-      // ✅ 3. Faster native loader
-      map.loadImage(locdot, (err, image) => {
+  // CLUSTER CIRCLES
+  map.addLayer({
+    id: "clusters",
+    type: "circle",
+    source: "lakes",
+    filter: ["has", "point_count"],
+    paint: {
+      "circle-color": "#38bdf8",
+      "circle-radius": [
+        "step",
+        ["get", "point_count"],
+        18,   // < 10 points
+        10, 22, // 10–29
+        30, 28  // 30+
+      ],
+      "circle-opacity": 0.9,
+    },
+  });
+
+  // CLUSTER COUNT TEXT
+  map.addLayer({
+    id: "cluster-count",
+    type: "symbol",
+    source: "lakes",
+    filter: ["has", "point_count"],
+    layout: {
+      "text-field": "{point_count_abbreviated}",
+      "text-size": 14,
+      "text-font": ["Open Sans Bold"],
+    },
+    paint: {
+      "text-color": "#ffffff",
+    },
+  });
+
+  // LOAD ICON
+  map.loadImage(locdot, (err, image) => {
+    if (err) return;
+
+    map.addImage("locdot-icon", image);
+
+    // UNCLUSTERED POINTS
+    map.addLayer({
+      id: "unclustered-point",
+      type: "symbol",
+      source: "lakes",
+      filter: ["!", ["has", "point_count"]],
+      layout: {
+        "icon-image": "locdot-icon",
+        "icon-size": 0.1,
+        "icon-anchor": "bottom",
+      },
+    });
+  });
+
+  // CLICK CLUSTER → ZOOM IN
+  map.on("click", "clusters", (e) => {
+    const features = map.queryRenderedFeatures(e.point, {
+      layers: ["clusters"],
+    });
+
+    const clusterId = features[0].properties.cluster_id;
+
+    map.getSource("lakes").getClusterExpansionZoom(
+      clusterId,
+      (err, zoom) => {
         if (err) return;
 
-        map.addImage("locdot-icon", image);
-
-        map.addLayer({
-          id: "lakes-symbol",
-          type: "symbol",
-          source: "lakes",
-          layout: {
-            "icon-image": "locdot-icon",
-            "icon-size": 0.1,
-            "icon-anchor": "bottom",
-            "icon-allow-overlap": true,   
-          },
+        map.easeTo({
+          center: features[0].geometry.coordinates,
+          zoom: zoom,
         });
-      });
+      }
+    );
+  });
 
-      map.on("click", "lakes-symbol", (e) => {
-        const id = e.features[0].properties.id;
+  // CLICK SINGLE POINT → OPEN MODAL
+  map.on("click", "unclustered-point", (e) => {
+    const id = e.features[0].properties.id;
+    const lake = lakeMap.get(id);
 
-        // ✅ O(1) instead of find()
-        const lake = lakeMap.get(id);
+    if (lake) setModalData(lake);
+  });
 
-        if (lake) setModalData(lake);
-      });
+  // POINTER CURSOR
+  map.on("mouseenter", "clusters", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
 
-      map.on("mouseenter", "lakes-symbol", () => {
-        map.getCanvas().style.cursor = "pointer";
-      });
+  map.on("mouseleave", "clusters", () => {
+    map.getCanvas().style.cursor = "";
+  });
 
-      map.on("mouseleave", "lakes-symbol", () => {
-        map.getCanvas().style.cursor = "";
-      });
-    });
+  map.on("mouseenter", "unclustered-point", () => {
+    map.getCanvas().style.cursor = "pointer";
+  });
+
+  map.on("mouseleave", "unclustered-point", () => {
+    map.getCanvas().style.cursor = "";
+  });
+});
 
     return () => map.remove();
   }, [lakesGeoJSON, lakeMap]);
