@@ -70,6 +70,7 @@ export default function OverviewPage() {
             "icon-image": "locdot-icon",
             "icon-size": 0.1,
             "icon-anchor": "bottom",
+            "icon-allow-overlap": true,   
           },
         });
       });

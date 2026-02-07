@@ -16,7 +16,18 @@ function App() {
         <Route
           path="map"
           element={
-            <Suspense fallback={<div className="text-center items-center flex justify-center h-[50vw]">Загружаем карту...</div>}>
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-screen w-full bg-sky-100">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-sky-400 border-t-transparent"></div>
+                    <p className="text-lg md:text-xl font-medium text-gray-700">
+                      Загружаем карту...
+                    </p>
+                  </div>
+                </div>
+              }
+            >
               <OverviewPage />
             </Suspense>
           }
